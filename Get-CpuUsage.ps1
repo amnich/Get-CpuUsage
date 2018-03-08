@@ -101,8 +101,8 @@ Param
 					}
 			}
 			else{
-				$data = get-counter -Counter "\238(_Total)\6" -SampleInterval $SampleInterval -MaxSamples $MaxSamples 
-				$counter = ($data | select -ExpandProperty countersamples | select -ExpandProperty cookedvalue | Measure-Object -Average).average
+				$data = Get-Counter -Counter "\238(_Total)\6" -SampleInterval $SampleInterval -MaxSamples $MaxSamples 
+				$counter = (($data.countersamples).cookedvalue | Measure-Object -Average).average
 				$object =  New-Object PSCustomObject -Property @{
 					ComputerName = $Env:COMPUTERNAME
 					Name = "_Total"
